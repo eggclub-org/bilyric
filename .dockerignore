@@ -2,3 +2,17 @@
 !.coveragerc
 !.env
 !.pylintrc
+
+# Ignore git, compose, IDE
+.dockerignore
+.git
+.gitignore
+0compose/
+venv/
+.venv/
+.idea/
+
+# Ignore mysql data
+mysql-data/
+01_backup/
+

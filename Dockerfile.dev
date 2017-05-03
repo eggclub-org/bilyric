@@ -11,7 +11,7 @@ ENV REFRESHED_AT 2017-05-01
 RUN apt-get update -qq
 
 # Using apt-cacher-ng proxy for caching deb package
-#RUN echo 'Acquire::http::Proxy "http://172.17.0.1:3142/";' > /etc/apt/apt.conf.d/01proxy
+RUN echo 'Acquire::http::Proxy "http://172.17.0.1:3142/";' > /etc/apt/apt.conf.d/01proxy
 
 # Make the "en_US.UTF-8" locale
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales \
@@ -26,7 +26,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libmysqlclient-dev \
 COPY requirements /tmp/requirements
 RUN pip3 install -r /tmp/requirements/base.txt
 RUN pip3 install -r /tmp/requirements/production.txt
-#RUN pip3 install -r /tmp/requirements/local.txt
+RUN pip3 install -r /tmp/requirements/local.txt
 
 COPY . /usr/src/app
 WORKDIR /usr/src/app
